@@ -1,5 +1,6 @@
-package br.com.netodevel.onboardingkt
+package br.com.netodevel.router_manager
 
+import br.com.netodevel.route_manager.RegexHelper
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertTrue
 import org.junit.Test

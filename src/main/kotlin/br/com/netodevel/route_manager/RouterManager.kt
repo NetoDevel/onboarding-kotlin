@@ -1,4 +1,4 @@
-package br.com.netodevel.onboardingkt
+package br.com.netodevel.route_manager
 
 class RouterManager(var routes: List<String>? = null) {
 
