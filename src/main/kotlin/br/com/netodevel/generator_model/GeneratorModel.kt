@@ -6,35 +6,16 @@ class GeneratorModel() {
         if (model.className.isNullOrEmpty() || model.parameters.isNullOrEmpty())
             throw IllegalArgumentException()
 
-        return generateClass(model.className!!).plus(generateParameters(model.parameters!!));
+        return generateClass(model.className!!)
+                .plus(generateParams(model.parameters!!));
+    }
+
+    fun generateParams(params: String) : String {
+        val splitParams = params.split(" ")
+        return splitParams.map{ "val $it" }.joinToString(", ", "(", ")")
     }
 
     fun generateClass(className: String) : String {
         return "class ${className}"
     }
-
-    fun generateParameters(params: String): String {
-        val splitParams = params.split(" ")
-        var paramsGenerated = "("
-
-        for (i in splitParams.indices) {
-            if (isLastElement(splitParams, i) && !onlyOneElement(splitParams)) {
-                paramsGenerated += "val ${splitParams[i]})"
-            }
-
-            if (onlyOneElement(splitParams)) {
-                paramsGenerated += "val ${splitParams[i]})"
-            }
-
-            if (!onlyOneElement(splitParams) && !isLastElement(splitParams, i)){
-                paramsGenerated += "val ${splitParams[i]}, "
-            }
-        }
-
-        return paramsGenerated
-    }
-
-    private fun onlyOneElement(splitParams: List<String>) = splitParams.size == 1
-    private fun isLastElement(splitParams: List<String>, i: Int) = splitParams.size == i + 1
-
 }

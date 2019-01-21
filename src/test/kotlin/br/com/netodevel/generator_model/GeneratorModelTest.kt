@@ -50,13 +50,13 @@ class GeneratorModelTest {
 
     @Test
     fun dadoParameters_deveRetornarTodosAtributosGerados() {
-        val classGenerated = GeneratorModel().generateParameters("name:String idade:Int")
+        val classGenerated = GeneratorModel().generateParams("name:String idade:Int")
         assertEquals("(val name:String, val idade:Int)", classGenerated)
     }
 
     @Test
     fun dadoUnicoParametro_deveRetornarTodosAtributosGerados() {
-        val classGenerated = GeneratorModel().generateParameters("name:String")
+        val classGenerated = GeneratorModel().generateParams("name:String")
         assertEquals("(val name:String)", classGenerated)
     }
 
